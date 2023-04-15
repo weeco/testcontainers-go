@@ -60,6 +60,7 @@ nav:
         - modules/neo4j.md
         - modules/pulsar.md
         - modules/redis.md
+        - modules/redpanda.md
         - modules/vault.md
     - Examples:
         - examples/index.md
