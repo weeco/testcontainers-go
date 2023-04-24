@@ -1,5 +1,11 @@
 # Postgres
 
+Not available until the next release of testcontainers-go <a href="https://github.com/testcontainers/testcontainers-go"><span class="tc-version">:material-tag: main</span></a>
+
+## Introduction
+
+The Testcontainers module for Postgres.
+
 ## Adding this module to your project dependencies
 
 Please run the following command to add the Postgres module to your Go dependencies:
@@ -19,11 +25,11 @@ go get github.com/testcontainers/testcontainers-go/modules/postgres
 The Postgres module exposes one entrypoint function to create the Postgres container, and this function receives two parameters:
 
 ```golang
-func RunContainer(ctx context.Context, opts ...testcontainers.CustomizeRequestOption) (*PostgresContainer, error)
+func RunContainer(ctx context.Context, opts ...testcontainers.ContainerCustomizer) (*PostgresContainer, error)
 ```
 
 - `context.Context`, the Go context.
-- `testcontainers.CustomizeRequestOption`, a variadic argument for passing options.
+- `testcontainers.ContainerCustomizer`, a variadic argument for passing options.
 
 ### Container Options
 

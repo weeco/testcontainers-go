@@ -1,5 +1,11 @@
 # Redis
 
+Not available until the next release of testcontainers-go <a href="https://github.com/testcontainers/testcontainers-go"><span class="tc-version">:material-tag: main</span></a>
+
+## Introduction
+
+The Testcontainers module for Redis.
+
 ## Adding this module to your project dependencies
 
 Please run the following command to add the Redis module to your Go dependencies:
@@ -19,11 +25,11 @@ go get github.com/testcontainers/testcontainers-go/modules/redis
 The Redis module exposes one entrypoint function to create the containerr, and this function receives two parameters:
 
 ```golang
-func RunContainer(ctx context.Context, opts ...testcontainers.CustomizeRequestOption) (*RedisContainer, error)
+func RunContainer(ctx context.Context, opts ...testcontainers.ContainerCustomizer) (*RedisContainer, error)
 ```
 
 - `context.Context`, the Go context.
-- `testcontainers.CustomizeRequestOption`, a variad argument for passing options.
+- `testcontainers.ContainerCustomizer`, a variadic argument for passing options.
 
 ### Container Options
 

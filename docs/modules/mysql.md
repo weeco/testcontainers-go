@@ -1,5 +1,11 @@
 # MySQL
 
+Not available until the next release of testcontainers-go <a href="https://github.com/testcontainers/testcontainers-go"><span class="tc-version">:material-tag: main</span></a>
+
+## Introduction
+
+The Testcontainers module for MySQL.
+
 ## Adding this module to your project dependencies
 
 Please run the following command to add the MySQL module to your Go dependencies:
@@ -19,11 +25,11 @@ go get github.com/testcontainers/testcontainers-go/modules/mysql
 The MySQL module exposes one entrypoint function to create the container, and this function receives two parameters:
 
 ```golang
-func RunContainer(ctx context.Context, opts ...testcontainers.CustomizeRequestOption) (*MySQLContainer, error) {
+func RunContainer(ctx context.Context, opts ...testcontainers.ContainerCustomizer) (*MySQLContainer, error) {
 ```
 
 - `context.Context`, the Go context.
-- `testcontainers.CustomizeRequestOption`, a variad argument for passing options.
+- `testcontainers.ContainerCustomizer`, a variadic argument for passing options.
 
 ## Container Options
 

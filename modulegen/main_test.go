@@ -413,18 +413,21 @@ func assertExampleDocContent(t *testing.T, example Example, exampleDocFile strin
 
 	data := strings.Split(string(content), "\n")
 	assert.Equal(t, data[0], "# "+title)
-	assert.Equal(t, data[2], "## Adding this module to your project dependencies")
-	assert.Equal(t, data[4], "Please run the following command to add the "+title+" module to your Go dependencies:")
-	assert.Equal(t, data[7], "go get github.com/testcontainers/testcontainers-go/"+example.ParentDir()+"/"+lower)
-	assert.Equal(t, data[12], "<!--codeinclude-->")
-	assert.Equal(t, data[13], "[Creating a "+title+" container](../../"+example.ParentDir()+"/"+lower+"/"+lower+".go)")
-	assert.Equal(t, data[14], "<!--/codeinclude-->")
-	assert.Equal(t, data[16], "<!--codeinclude-->")
-	assert.Equal(t, data[17], "[Test for a "+title+" container](../../"+example.ParentDir()+"/"+lower+"/"+lower+"_test.go)")
-	assert.Equal(t, data[18], "<!--/codeinclude-->")
-	assert.Equal(t, data[22], "The "+title+" module exposes one entrypoint function to create the "+title+" container, and this function receives two parameters:")
-	assert.True(t, strings.HasSuffix(data[25], "(*"+title+"Container, error)"))
-	assert.Equal(t, "for "+title+". E.g. `testcontainers.WithImage(\""+example.Image+"\")`.", data[38])
+	assert.Equal(t, data[2], `Not available until the next release of testcontainers-go <a href="https://github.com/testcontainers/testcontainers-go"><span class="tc-version">:material-tag: main</span></a>`)
+	assert.Equal(t, data[4], "## Introduction")
+	assert.Equal(t, data[6], "The Testcontainers module for "+title+".")
+	assert.Equal(t, data[8], "## Adding this module to your project dependencies")
+	assert.Equal(t, data[10], "Please run the following command to add the "+title+" module to your Go dependencies:")
+	assert.Equal(t, data[13], "go get github.com/testcontainers/testcontainers-go/"+example.ParentDir()+"/"+lower)
+	assert.Equal(t, data[18], "<!--codeinclude-->")
+	assert.Equal(t, data[19], "[Creating a "+title+" container](../../"+example.ParentDir()+"/"+lower+"/"+lower+".go)")
+	assert.Equal(t, data[20], "<!--/codeinclude-->")
+	assert.Equal(t, data[22], "<!--codeinclude-->")
+	assert.Equal(t, data[23], "[Test for a "+title+" container](../../"+example.ParentDir()+"/"+lower+"/"+lower+"_test.go)")
+	assert.Equal(t, data[24], "<!--/codeinclude-->")
+	assert.Equal(t, data[28], "The "+title+" module exposes one entrypoint function to create the "+title+" container, and this function receives two parameters:")
+	assert.True(t, strings.HasSuffix(data[31], "(*"+title+"Container, error)"))
+	assert.Equal(t, "for "+title+". E.g. `testcontainers.WithImage(\""+example.Image+"\")`.", data[44])
 }
 
 // assert content example test
@@ -435,7 +438,7 @@ func assertExampleTestContent(t *testing.T, example Example, exampleTestFile str
 	data := strings.Split(string(content), "\n")
 	assert.Equal(t, data[0], "package "+example.Lower())
 	assert.Equal(t, data[7], "func Test"+example.Title()+"(t *testing.T) {")
-	assert.Equal(t, data[10], "\tcontainer, err := setup"+example.Title()+"(ctx)")
+	assert.Equal(t, data[10], "\tcontainer, err := RunContainer(ctx)")
 }
 
 // assert content example
@@ -453,9 +456,9 @@ func assertExampleContent(t *testing.T, example Example, exampleFile string) {
 	assert.Equal(t, data[8], "// "+containerName+" represents the "+exampleName+" container type used in the module")
 	assert.Equal(t, data[9], "type "+containerName+" struct {")
 	assert.Equal(t, data[13], "// "+entrypoint+" creates an instance of the "+exampleName+" container type")
-	assert.Equal(t, data[14], "func "+entrypoint+"(ctx context.Context, opts ...testcontainers.CustomizeRequestOption) (*"+containerName+", error) {")
+	assert.Equal(t, data[14], "func "+entrypoint+"(ctx context.Context, opts ...testcontainers.ContainerCustomizer) (*"+containerName+", error) {")
 	assert.Equal(t, data[16], "\t\tImage: \""+example.Image+"\",")
-	assert.Equal(t, data[31], "\treturn &"+containerName+"{Container: container}, nil")
+	assert.Equal(t, data[33], "\treturn &"+containerName+"{Container: container}, nil")
 }
 
 // assert content GitHub workflow for the example
